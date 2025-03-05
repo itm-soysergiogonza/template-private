@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  logoUrl:'/assets/images/Logo.svg',
+  logoUrl: '/assets/images/Logo.svg',
 };

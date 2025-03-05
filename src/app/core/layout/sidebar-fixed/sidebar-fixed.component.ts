@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import {
   NbButtonModule,
   NbIconModule,
-  NbLayoutModule, NbMenuItem,
+  NbLayoutModule,
+  NbMenuItem,
   NbMenuModule,
   NbSidebarModule,
 } from '@nebular/theme';
@@ -14,19 +15,18 @@ import {
     NbButtonModule,
     NbSidebarModule,
     NbIconModule,
-    NbMenuModule
+    NbMenuModule,
   ],
   templateUrl: './sidebar-fixed.component.html',
-  styleUrl: './sidebar-fixed.component.scss'
+  styleUrl: './sidebar-fixed.component.scss',
 })
-
 export class SidebarFixedComponent {
   menuItems: NbMenuItem[] = [
     {
       title: 'Dashboard',
       icon: 'home-outline',
       link: '/dashboard',
-      home: true
+      home: true,
     },
     {
       title: 'FEATURES',
@@ -43,13 +43,13 @@ export class SidebarFixedComponent {
         {
           title: 'User Profile',
           link: '/users/profile',
-        }
-      ]
+        },
+      ],
     },
     {
       title: 'Settings',
       icon: 'settings-2-outline',
-      link: '/settings'
-    }
+      link: '/settings',
+    },
   ];
 }
