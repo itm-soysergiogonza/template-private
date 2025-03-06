@@ -9,5 +9,12 @@
     align-items: center;
     width: 100%;
   }
+
+  .sidebar-toggle {
+    background: none;
+    border: none;
+    color: white;
+    --icon-font-size: 2rem;
+  }
 }
 
