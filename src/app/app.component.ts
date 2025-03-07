@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NbLayoutModule, NbSidebarModule } from '@nebular/theme';
+import {
+  NbButtonModule,
+  NbIconModule,
+  NbLayoutModule,
+  NbSidebarModule,
+  NbSidebarService,
+} from '@nebular/theme';
 import { HeaderComponent } from './core/layout/header/header.component';
 import { SidebarFixedComponent } from './core/layout/sidebar-fixed/sidebar-fixed.component';
 
@@ -12,8 +18,16 @@ import { SidebarFixedComponent } from './core/layout/sidebar-fixed/sidebar-fixed
     SidebarFixedComponent,
     HeaderComponent,
     NbSidebarModule,
+    NbButtonModule,
+    NbIconModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class App {}
+export class App {
+  constructor(private _sidebarService: NbSidebarService) {}
+
+  toggle() {
+    this._sidebarService.toggle(true, 'left');
+  }
+}

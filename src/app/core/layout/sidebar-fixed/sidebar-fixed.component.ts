@@ -14,7 +14,7 @@ import {
   NbMenuItem,
   NbMenuModule,
   NbSidebarModule,
-  NbSidebarService,
+  NbTooltipModule,
 } from '@nebular/theme';
 
 @Component({
@@ -26,14 +26,15 @@ import {
     NbSidebarModule,
     NbIconModule,
     NbMenuModule,
+    NbTooltipModule,
   ],
   templateUrl: './sidebar-fixed.component.html',
   styleUrl: './sidebar-fixed.component.scss',
   animations: [
     trigger('collapseAnimation', [
-      state('expanded', style({ width: '250px' })),
+      state('expanded', style({ width: '240px' })),
       state('collapsed', style({ width: '80px' })),
-      transition('expanded <=> collapsed', [animate('300ms ease-in-out')]),
+      transition('expanded <=> collapsed', [animate('200ms ease-in-out')]),
     ]),
   ],
 })
@@ -43,21 +44,11 @@ export class SidebarFixedComponent {
       title: 'Dashboard',
       icon: 'home-outline',
       link: '/dashboard',
-      home: true,
     },
     {
       title: 'Users',
       icon: 'people-outline',
-      children: [
-        {
-          title: 'User List',
-          link: '/users/list',
-        },
-        {
-          title: 'User Profile',
-          link: '/users/profile',
-        },
-      ],
+      link: '/users',
     },
     {
       title: 'Settings',
@@ -65,14 +56,4 @@ export class SidebarFixedComponent {
       link: '/settings',
     },
   ];
-
-  constructor(private _sidebarService: NbSidebarService) {}
-
-  isCollapsed = false;
-
-  toggle() {
-    this._sidebarService.toggle(true);
-    this.isCollapsed = !this.isCollapsed;
-    return false;
-  }
 }

@@ -3,10 +3,15 @@
     <app-header class="test"></app-header>
   </nb-layout-header>
 
-  <nb-layout-column>
-    <nb-sidebar fixed state="expanded">
-      <nb-sidebar-fixed></nb-sidebar-fixed>
-    </nb-sidebar>
+  <nb-sidebar left tag="left">
+    <button nbButton status="info" size="small" (click)="toggle()">
+      <nb-icon icon='log-out-outline'></nb-icon>
+    </button>
+    <nb-sidebar-fixed></nb-sidebar-fixed>
+  </nb-sidebar>
+
+  <nb-layout-column class="colored-column-info">
+    Long layout content so that it is clear that fixed sidebar is shown on top of the content.
   </nb-layout-column>
 </nb-layout>
 

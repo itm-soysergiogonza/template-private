@@ -1,19 +1,8 @@
 @use '../../../../themes' as *;
 
 :host {
-  .sidebar-container {
-    position: relative;
-
-    .sidebar-toggle {
-      position: absolute;
-      top: 0.5rem;
-      right: 1rem;
-      background: none;
-      border: 2px solid var(--color-white);
-      border-radius: 0.4rem;
-      color: var(--color-white);
-      --icon-font-size: 2rem;
-    }
+  nb-menu {
+    border: 1px solid red;
+    align-items: center;
   }
-
 }
