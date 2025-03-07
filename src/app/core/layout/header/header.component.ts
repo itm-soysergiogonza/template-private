@@ -12,6 +12,7 @@ import { env as environment } from '../../../../environments';
 
 @Component({
   selector: 'app-header',
+  standalone: true,
   imports: [
     NbLayoutModule,
     NbActionsModule,
@@ -25,9 +26,10 @@ import { env as environment } from '../../../../environments';
 })
 export class HeaderComponent {
   logoURL: string = environment.logoUrl;
-  constructor(private _sidebarService: NbSidebarService) {}
+  
+  constructor(private sidebarService: NbSidebarService) {}
 
   toggle() {
-    this._sidebarService.toggle();
+    this.sidebarService.toggle();
   }
 }

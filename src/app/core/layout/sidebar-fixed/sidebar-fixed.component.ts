@@ -1,3 +1,11 @@
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   NbButtonModule,
@@ -6,11 +14,13 @@ import {
   NbMenuItem,
   NbMenuModule,
   NbSidebarModule,
+  NbSidebarService,
 } from '@nebular/theme';
 
 @Component({
   selector: 'nb-sidebar-fixed',
   imports: [
+    CommonModule,
     NbLayoutModule,
     NbButtonModule,
     NbSidebarModule,
@@ -19,6 +29,13 @@ import {
   ],
   templateUrl: './sidebar-fixed.component.html',
   styleUrl: './sidebar-fixed.component.scss',
+  animations: [
+    trigger('collapseAnimation', [
+      state('expanded', style({ width: '250px' })),
+      state('collapsed', style({ width: '80px' })),
+      transition('expanded <=> collapsed', [animate('300ms ease-in-out')]),
+    ]),
+  ],
 })
 export class SidebarFixedComponent {
   menuItems: NbMenuItem[] = [
@@ -27,10 +44,6 @@ export class SidebarFixedComponent {
       icon: 'home-outline',
       link: '/dashboard',
       home: true,
-    },
-    {
-      title: 'FEATURES',
-      group: true,
     },
     {
       title: 'Users',
@@ -52,4 +65,14 @@ export class SidebarFixedComponent {
       link: '/settings',
     },
   ];
+
+  constructor(private _sidebarService: NbSidebarService) {}
+
+  isCollapsed = false;
+
+  toggle() {
+    this._sidebarService.toggle(true);
+    this.isCollapsed = !this.isCollapsed;
+    return false;
+  }
 }

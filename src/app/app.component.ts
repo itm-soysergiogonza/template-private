@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NbLayoutModule } from '@nebular/theme';
+import { NbLayoutModule, NbSidebarModule } from '@nebular/theme';
 import { HeaderComponent } from './core/layout/header/header.component';
 import { SidebarFixedComponent } from './core/layout/sidebar-fixed/sidebar-fixed.component';
 
@@ -11,6 +11,7 @@ import { SidebarFixedComponent } from './core/layout/sidebar-fixed/sidebar-fixed
     NbLayoutModule,
     SidebarFixedComponent,
     HeaderComponent,
+    NbSidebarModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

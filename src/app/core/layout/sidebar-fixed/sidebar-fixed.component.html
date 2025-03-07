@@ -1,5 +1,6 @@
-<nb-sidebar fixed state="expanded">
-  <div class="sidebar-container">
+  <div class="sidebar-container" [@collapseAnimation]="isCollapsed ? 'collapsed' : 'expanded'">
     <nb-menu [items]="menuItems"></nb-menu>
+    <button (click)="toggle()" class="sidebar-toggle">
+      <nb-icon icon="log-in-outline"></nb-icon>
+    </button>
   </div>
-</nb-sidebar>

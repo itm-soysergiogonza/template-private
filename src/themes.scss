@@ -83,6 +83,12 @@ $nb-themes: nb-register-theme((
   color-error-800: #65002d,
   color-error-900: #40001c,
 
+  //Common Colors
+  color-white: #ffffff,
+  color-transparent: transparent,
   header-background-color: color-primary,
   sidebar-background-color: color-primary,
+
+
+  header-shadow: none,
 ), cosmic, cosmic);
