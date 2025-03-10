@@ -1,0 +1,14 @@
+:host ::ng-deep {
+  --context-menu-background-color: none;
+  --context-menu-min-width: none;
+  --context-menu-max-width: none;
+  --user-picture-box-border-width: 2px;
+  --user-picture-box-border-color: var(--color-white);
+  --context-menu-text-align: left !important;
+
+  .user-container {
+    display: block !important;
+  }
+}
+
+
