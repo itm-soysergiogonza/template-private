@@ -1,7 +1,12 @@
 <div class="header-container">
-  <picture class="header-logo">
-    <img [ngSrc]="logoURL" alt="Logo" srcset="" priority width="250" height="35">
-  </picture>
+  <article class="logo-container">
+      <button nbButton status="info" size="small" (click)="toggle()">
+    <nb-icon icon='menu-2-outline'></nb-icon>
+      </button>
+    <picture class="header-logo">
+      <img [ngSrc]="logoURL" alt="Logo" srcset="" priority width="83" height="35">
+    </picture>
+  </article>
   <article class="header-profile-options">
     <nb-context-menu></nb-context-menu>
   </article>

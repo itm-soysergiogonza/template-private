@@ -9,6 +9,18 @@
     align-items: center;
     width: 100%;
 
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+    button {
+      background: none;
+      border: none;
+      --button-small-icon-size: 3rem;
+    }
+    }
+
     .header-profile-options {
       display: flex;
       align-items: center;
