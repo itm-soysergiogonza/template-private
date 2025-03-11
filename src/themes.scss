@@ -86,9 +86,10 @@ $nb-themes: nb-register-theme((
   //Common Colors
   color-white: #ffffff,
   color-transparent: transparent,
-  header-background-color: color-primary,
-  sidebar-background-color: color-primary,
 
+  color-basic-800: var(--color-primary-500),
+
+  context-menu-text-align: left,
 
   header-shadow: none,
 ), cosmic, cosmic);

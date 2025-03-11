@@ -9,8 +9,18 @@
     align-items: center;
     width: 100%;
 
+    .header-profile-options {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
     nb-user-avatar-settings {
       width: initial;
+    }
+
+    nb-context-menu {
+      --context-menu-shadow: none;
     }
   }
 }
