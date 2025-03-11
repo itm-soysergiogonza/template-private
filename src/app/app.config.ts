@@ -16,7 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideAnimations(),
-    NbThemeModule.forRoot({ name: 'cosmic' }).providers || [],
+    NbThemeModule.forRoot({ name: 'default' }).providers || [],
     NbSidebarModule.forRoot().providers || [],
     NbMenuModule.forRoot().providers || [],
     BrowserAnimationsModule,

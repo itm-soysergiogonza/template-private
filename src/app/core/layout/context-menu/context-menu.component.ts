@@ -4,6 +4,7 @@ import {
   NbButtonModule,
   NbContextMenuModule,
   NbMenuService, NbPosition,
+  NbThemeService,
   NbUserModule,
 } from '@nebular/theme';
 import { filter, map } from 'rxjs/operators';
@@ -16,21 +17,26 @@ import { filter, map } from 'rxjs/operators';
 })
 export class ContextMenuClickComponent implements OnInit {
  items = [
-    { title: 'Profile' },
-   {
-      title: 'Tema',
-      children: [
-        { title: 'Claro' },
-        { title: 'Oscuro' },
-        { title: 'Sistema' },
-      ],
-   },
-    { title: 'Logout' },
+  { title: 'Profile', icon: 'person-outline' },
+  {
+    title: 'Tema',
+    icon: 'color-palette-outline',
+    children: [
+      { title: 'Claro', icon: 'sun-outline' },
+      { title: 'Oscuro', icon: 'moon-outline' },
+      { title: 'Sistema', icon: 'monitor-outline' },
+    ],
+  },
+  { title: 'Logout', icon: 'log-out-outline' },
+];
 
-  ];
-
-  constructor(private nbMenuService: NbMenuService, @Inject(NB_WINDOW) private window: Window) {
+  constructor(
+    private nbMenuService: NbMenuService,
+    private _themeService: NbThemeService,
+  @Inject(NB_WINDOW) private window: Window
+  ) {
   }
+
 
   ngOnInit() {
     this.nbMenuService.onItemClick()
@@ -38,7 +44,24 @@ export class ContextMenuClickComponent implements OnInit {
         filter(({ tag }) => tag === 'my-context-menu'),
         map(({ item: { title } }) => title),
       )
-      .subscribe(title => this.window.alert(`${title} was clicked!`));
+      .subscribe(title => {
+        switch (title) {
+          case 'Claro':
+            this._themeService.changeTheme('default');
+            break;
+          case 'Oscuro':
+            this._themeService.changeTheme('cosmic');
+            break;
+          case 'Sistema': {
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            this._themeService.changeTheme(prefersDark ? 'cosmic' : 'default');
+            break;
+          }
+          default:
+            this.window.alert(`${title} was clicked!`);
+            break;
+        }
+      });
   }
 
   protected readonly NbPosition = NbPosition;

@@ -1,7 +1,8 @@
 <nb-user size="large"
-         name="Jonh Doe"
-         title="Engineer"
+         [name]="'Jonh Doe'"
+         [title]="'Engineer'"
          [nbContextMenu]="items"
+         nbContextMenuTag="my-context-menu"
          [nbContextMenuPlacement]="NbPosition.BOTTOM"
          nbContextMenuTrigger="click"
          onlyPicture>
