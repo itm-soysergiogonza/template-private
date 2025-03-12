@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {
   NB_WINDOW,
   NbButtonModule,
@@ -17,7 +17,7 @@ type ThemeOption = 'default' | 'cosmic' | 'system';
   templateUrl: './context-menu.component.html',
   standalone: true,
   imports: [NbContextMenuModule, NbButtonModule, NbUserModule],
-  styleUrl: './context-menu.component.scss',
+  styleUrls: ['./context-menu.component.scss'],
 })
 export class ContextMenuClickComponent implements OnInit {
   items = [

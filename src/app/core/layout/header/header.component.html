@@ -1,6 +1,6 @@
 <div class="header-container">
   <article class="logo-container">
-      <button nbButton status="info" size="small" (click)="toggle()">
+      <button nbButton status="info" size="small" class="custom-icon" (click)="toggle()">
     <nb-icon icon='menu-2-outline'></nb-icon>
       </button>
     <picture class="header-logo">
@@ -8,6 +8,9 @@
     </picture>
   </article>
   <article class="header-profile-options">
+    <button nbButton status="info" size="small" class="custom-icon">
+      <nb-icon icon='grid-outline'></nb-icon>
+    </button>
     <nb-context-menu></nb-context-menu>
   </article>
 </div>

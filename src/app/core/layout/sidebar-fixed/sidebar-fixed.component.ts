@@ -5,8 +5,8 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import {
   NbButtonModule,
   NbIconModule,
@@ -14,8 +14,11 @@ import {
   NbMenuItem,
   NbMenuModule,
   NbSidebarModule,
+  NbThemeService,
   NbTooltipModule,
 } from '@nebular/theme';
+
+type ThemeOption = 'default' | 'cosmic';
 
 @Component({
   selector: 'nb-sidebar-fixed',
@@ -27,6 +30,7 @@ import {
     NbIconModule,
     NbMenuModule,
     NbTooltipModule,
+    NgOptimizedImage,
   ],
   templateUrl: './sidebar-fixed.component.html',
   styleUrl: './sidebar-fixed.component.scss',
@@ -38,7 +42,7 @@ import {
     ]),
   ],
 })
-export class SidebarFixedComponent {
+export class SidebarFixedComponent implements OnInit {
   menuItems: NbMenuItem[] = [
     {
       title: 'Dashboard',
@@ -56,4 +60,29 @@ export class SidebarFixedComponent {
       link: '/settings',
     },
   ];
+  logoURL = '/assets/images/LogoITMSmallBlue.svg';
+
+  constructor(private _themeService: NbThemeService) {}
+
+  ngOnInit(): void {
+    this.setupThemeListener();
+  }
+
+  private setupThemeListener(): void {
+    const currentTheme = this._themeService.currentTheme;
+    if (currentTheme) {
+      this.updateLogo(currentTheme as ThemeOption);
+    }
+
+    this._themeService.onThemeChange().subscribe((theme) => {
+      this.updateLogo(theme.name as ThemeOption);
+    });
+  }
+
+  private updateLogo(theme: ThemeOption): void {
+    this.logoURL =
+      theme === 'cosmic'
+        ? '/assets/images/LogoITMSmallWhite.svg'
+        : '/assets/images/LogoITMSmallBlue.svg';
+  }
 }

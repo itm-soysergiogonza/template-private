@@ -1,12 +1,19 @@
+@use '../../../../themes' as *;
+
 :host ::ng-deep {
   --context-menu-min-width: none;
   --context-menu-max-width: none;
   --user-picture-box-border-width: 2px;
   --user-picture-box-border-color: var(--color-white);
 
+
+
+
   .user-container {
     display: block !important;
   }
 }
 
-
+:host-context(.nb-theme-default) {
+  --user-picture-box-border-color: var(--color-basic-800)
+}
