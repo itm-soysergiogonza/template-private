@@ -1,5 +1,7 @@
 import {
   type ApplicationConfig,
+  EnvironmentProviders,
+  Provider,
   provideZoneChangeDetection,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
@@ -11,14 +13,18 @@ import {
 import { NbMenuModule, NbSidebarModule, NbThemeModule } from '@nebular/theme';
 import { routes } from './app.routes';
 
+const NEBULAR_MODULES: (Provider | EnvironmentProviders)[] | undefined = [
+  NbThemeModule.forRoot({ name: 'default' }).providers || [],
+  NbSidebarModule.forRoot().providers || [],
+  NbMenuModule.forRoot().providers || [],
+];
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideAnimations(),
-    NbThemeModule.forRoot({ name: 'default' }).providers || [],
-    NbSidebarModule.forRoot().providers || [],
-    NbMenuModule.forRoot().providers || [],
+    ...NEBULAR_MODULES,
     BrowserAnimationsModule,
   ],
 };
